@@ -66,8 +66,8 @@ class A3C_LSTM_GA(torch.nn.Module):
         self.inverse_linear = nn.Linear(2 * rep_size, 256)
         self.inverse_actor = nn.Linear(256, 3) #3 different actions for now TODO
 
-        #Forward dynamic model. +1 for action
-        self.forward_linear = nn.Linear(rep_size + 1, 256)
+        #Forward dynamic model. action is 1-hot
+        self.forward_linear = nn.Linear(rep_size + 3, 256)
         self.forward_state = nn.Linear(256, rep_size)
 
         # Initializing weights
@@ -152,7 +152,7 @@ class A3C_LSTM_GA(torch.nn.Module):
         s1 = F.relu(self.conv2(s1))
         s1_image_rep = F.relu(self.conv3(s1)).view(-1)
 
-        a1 = a1.view(-1) #so a1 is only one param TODO
+        a1 = a1.view(-1) 
         x = torch.cat((s1_image_rep, a1))
         x = self.forward_linear(x)
         x = self.forward_state(x)

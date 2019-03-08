@@ -6,6 +6,10 @@ from torch.autograd import Variable
 
 import logging
 
+def warn(*args, **kwargs):
+    pass
+import warnings
+warnings.warn = warn
 
 def ensure_shared_grads(model, shared_model):
     for param, shared_param in zip(model.parameters(),
@@ -14,7 +18,7 @@ def ensure_shared_grads(model, shared_model):
             return
         shared_param._grad = param.grad
 
-def teacherTrain(rank, args, shared_model):
+def train(rank, args, shared_model):
     torch.manual_seed(args.seed + rank)
 
     env = grounding_env.GroundingEnv(args)
@@ -49,7 +53,7 @@ def teacherTrain(rank, args, shared_model):
     prevState = image
     prevAction = None
     beta = .2
-    lamb = .5 #TODO tune this. Needs to be higher because we want to language ground
+    lamb = .2 #TODO tune this. Language grounding is important
     eta = 1 #TODO tune this hyperparameter
 
 
@@ -90,10 +94,12 @@ def teacherTrain(rank, args, shared_model):
 
             action = prob.multinomial().data #action is sampled once from multinomial
             log_prob = log_prob.gather(1, Variable(action))
-            actionVariable = Variable(action.float()) #we use this later
+            oldAction = action
 
             action = action.numpy()[0, 0]
+            curReward = 0
             (image, _), reward, done,  _ = env.step(action)
+            curReward += reward
            
 
             done = done or episode_length >= args.max_episode_length
@@ -109,33 +115,36 @@ def teacherTrain(rank, args, shared_model):
 
             image = torch.from_numpy(image).float()/255.0
 
-
+            curReward = 0
             #curiosity loss and reward
-            if prevAction:
+            if prevAction is not None:
                 pred_action = model((Variable(prevState.unsqueeze(0)),
                                 Variable(image.unsqueeze(0))), 
                                 teacher=False, inverse=True)
                 a_prob = F.softmax(pred_action) 
-                a_loss = torch.norm(a_prob - prob, p=2)
+                a_loss = 1/2 * torch.norm(a_prob - prob)
                 #Because we have access to softmax, might as well use it TODO
-                pred_state = model((Variable(prevState.unsqueeze(0)), actionVariable),
-                                teacher=False, inverse=False)
+                actionTensor = torch.eye(3)[prevAction[0]]
+
+                pred_state = model((Variable(prevState.unsqueeze(0)),
+                                Variable(actionTensor)), teacher=False, inverse=False)
+
                 s_loss = 1/2 * torch.norm(pred_state - model.getImageRep(Variable(image.unsqueeze(0))))
                 policy_loss += (1-beta) * a_loss + beta * s_loss
-                #R += eta * s_loss TODO
+                curReward += eta * s_loss.data[0] #not differentiable
 
             #Updating curiosity
-            prevAction = action
+            prevAction = oldAction
             prevState = image
 
             values.append(value) #critic in actor-critic
             log_probs.append(log_prob)
-            rewards.append(reward) #+2 if found, -.1 if not found
+            rewards.append(curReward) #+2 if found, -.1 if not found, plus intrinsic
 
             if done:
                 break
         
-        R = torch.zeros(1, 1)
+        R = torch.zeros(1,1)
         if not done:
             tx = Variable(torch.from_numpy(np.array([episode_length])).long())
             value, _, _ = model((Variable(image.unsqueeze(0)),
@@ -161,7 +170,7 @@ def teacherTrain(rank, args, shared_model):
             new_loss = new_loss - \
                 log_probs[i] * Variable(gae) - 0.01 * entropies[i]
 
-        policy_loss += new_loss
+        policy_loss += lamb * new_loss
         optimizer.zero_grad()
 
         p_losses.append(policy_loss.data[0, 0])
@@ -187,6 +196,3 @@ def teacherTrain(rank, args, shared_model):
 
         ensure_shared_grads(model, shared_model)
         optimizer.step()
-
-def train(rank, args, shared_model):
-    teacherTrain(rank, args, shared_model)
