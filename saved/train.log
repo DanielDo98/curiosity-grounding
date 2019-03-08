@@ -1,0 +1,10 @@
+INFO:root:Time 00h 00m 58s, Avg Reward -0.02, Avg Accuracy 0.04, Avg Ep length 21.82, Best Reward 0.0
+INFO:root:Time 00h 00m 59s, Avg Reward 0.044, Avg Accuracy 0.1, Avg Ep length 24.94, Best Reward 0.0
+INFO:root:Time 00h 01m 58s, Avg Reward 0.004, Avg Accuracy 0.06, Avg Ep length 25.04, Best Reward 0.044
+INFO:root:Time 00h 00m 56s, Avg Reward 0.044, Avg Accuracy 0.1, Avg Ep length 22.28, Best Reward 0.0
+INFO:root:Time 00h 01m 49s, Avg Reward 0.016, Avg Accuracy 0.08, Avg Ep length 22.82, Best Reward 0.044
+INFO:root:Time 00h 02m 44s, Avg Reward 0.028, Avg Accuracy 0.12, Avg Ep length 19.34, Best Reward 0.044
+INFO:root:Time 00h 02m 00s, Avg Reward 0.0, Avg Accuracy 0.08, Avg Ep length 21.58, Best Reward 0.0
+INFO:root:Time 00h 04m 30s, Avg Reward 0.056, Avg Accuracy 0.1, Avg Ep length 23.64, Best Reward 0.0
+INFO:root:Time 00h 07m 08s, Avg Reward -0.076, Avg Accuracy 0.02, Avg Ep length 20.76, Best Reward 0.056
+INFO:root:Time 00h 09m 49s, Avg Reward 0.052, Avg Accuracy 0.12, Avg Ep length 22.02, Best Reward 0.056
