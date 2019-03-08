@@ -121,7 +121,8 @@ if __name__ == '__main__':
 
     # Start the training thread(s)
     for rank in range(0, args.num_processes):
-        p = mp.Process(target=train, args=(rank, args, shared_model))
+        #Half the threads will be curiosity agents.
+        p = mp.Process(target=train, args=(rank, args, shared_model)) 
         p.start()
         processes.append(p)
     for p in processes:

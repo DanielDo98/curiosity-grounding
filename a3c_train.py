@@ -14,8 +14,7 @@ def ensure_shared_grads(model, shared_model):
             return
         shared_param._grad = param.grad
 
-
-def train(rank, args, shared_model):
+def teacherTrain(rank, args, shared_model):
     torch.manual_seed(args.seed + rank)
 
     env = grounding_env.GroundingEnv(args)
@@ -46,6 +45,14 @@ def train(rank, args, shared_model):
 
     done = True
 
+    #Curiosity bookkeeping
+    prevState = image
+    prevAction = None
+    beta = .2
+    lamb = .5 #TODO tune this. Needs to be higher because we want to language ground
+    eta = 1 #TODO tune this hyperparameter
+
+
     episode_length = 0
     num_iters = 0
     while True:
@@ -65,23 +72,29 @@ def train(rank, args, shared_model):
         rewards = []
         entropies = []
 
+        #Optimizing over this
+        policy_loss = Variable(torch.zeros(1,1))
+        value_loss = 0
+
         for step in range(args.num_steps):
             episode_length += 1
             tx = Variable(torch.from_numpy(np.array([episode_length])).long())
 
             value, logit, (hx, cx) = model((Variable(image.unsqueeze(0)),
                                             Variable(instruction_idx),
-                                            (tx, hx, cx)))
+                                            (tx, hx, cx)), teacher=True, inverse=False)
             prob = F.softmax(logit)
             log_prob = F.log_softmax(logit)
             entropy = -(log_prob * prob).sum(1)
-            entropies.append(entropy)
+            entropies.append(entropy) 
 
-            action = prob.multinomial().data
+            action = prob.multinomial().data #action is sampled once from multinomial
             log_prob = log_prob.gather(1, Variable(action))
+            actionVariable = Variable(action.float()) #we use this later
 
             action = action.numpy()[0, 0]
             (image, _), reward, done,  _ = env.step(action)
+           
 
             done = done or episode_length >= args.max_episode_length
 
@@ -96,25 +109,44 @@ def train(rank, args, shared_model):
 
             image = torch.from_numpy(image).float()/255.0
 
-            values.append(value)
+
+            #curiosity loss and reward
+            if prevAction:
+                pred_action = model((Variable(prevState.unsqueeze(0)),
+                                Variable(image.unsqueeze(0))), 
+                                teacher=False, inverse=True)
+                a_prob = F.softmax(pred_action) 
+                a_loss = torch.norm(a_prob - prob, p=2)
+                #Because we have access to softmax, might as well use it TODO
+                pred_state = model((Variable(prevState.unsqueeze(0)), actionVariable),
+                                teacher=False, inverse=False)
+                s_loss = 1/2 * torch.norm(pred_state - model.getImageRep(Variable(image.unsqueeze(0))))
+                policy_loss += (1-beta) * a_loss + beta * s_loss
+                #R += eta * s_loss TODO
+
+            #Updating curiosity
+            prevAction = action
+            prevState = image
+
+            values.append(value) #critic in actor-critic
             log_probs.append(log_prob)
-            rewards.append(reward)
+            rewards.append(reward) #+2 if found, -.1 if not found
 
             if done:
                 break
-
+        
         R = torch.zeros(1, 1)
         if not done:
             tx = Variable(torch.from_numpy(np.array([episode_length])).long())
             value, _, _ = model((Variable(image.unsqueeze(0)),
-                                 Variable(instruction_idx), (tx, hx, cx)))
+                                 Variable(instruction_idx), (tx, hx, cx)),
+                                 teacher=True, inverse=False)
             R = value.data
 
         values.append(Variable(R))
-        policy_loss = 0
-        value_loss = 0
         R = Variable(R)
 
+        new_loss = 0
         gae = torch.zeros(1, 1)
         for i in reversed(range(len(rewards))):
             R = args.gamma * R + rewards[i]
@@ -126,9 +158,10 @@ def train(rank, args, shared_model):
                 values[i + 1].data - values[i].data
             gae = gae * args.gamma * args.tau + delta_t
 
-            policy_loss = policy_loss - \
+            new_loss = new_loss - \
                 log_probs[i] * Variable(gae) - 0.01 * entropies[i]
 
+        policy_loss += new_loss
         optimizer.zero_grad()
 
         p_losses.append(policy_loss.data[0, 0])
@@ -154,3 +187,6 @@ def train(rank, args, shared_model):
 
         ensure_shared_grads(model, shared_model)
         optimizer.step()
+
+def train(rank, args, shared_model):
+    teacherTrain(rank, args, shared_model)
