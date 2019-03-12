@@ -3,6 +3,7 @@ import env as grounding_env
 
 from models import *
 from torch.autograd import Variable
+import torch.nn.functional as F
 
 import logging
 
@@ -87,12 +88,12 @@ def train(rank, args, shared_model):
             value, logit, (hx, cx) = model((Variable(image.unsqueeze(0)),
                                             Variable(instruction_idx),
                                             (tx, hx, cx)), teacher=True, inverse=False)
-            prob = F.softmax(logit)
-            log_prob = F.log_softmax(logit)
+            prob = F.softmax(logit, dim=1)
+            log_prob = F.log_softmax(logit, dim=1)
             entropy = -(log_prob * prob).sum(1)
             entropies.append(entropy) 
 
-            action = prob.multinomial().data #action is sampled once from multinomial
+            action = prob.multinomial(1).data #action is sampled once from multinomial
             log_prob = log_prob.gather(1, Variable(action))
             oldAction = action
 
@@ -131,7 +132,7 @@ def train(rank, args, shared_model):
 
                 s_loss = 1/2 * torch.norm(pred_state - model.getImageRep(Variable(image.unsqueeze(0))))
                 policy_loss += (1-beta) * a_loss + beta * s_loss
-                curReward += eta * s_loss.data[0] #not differentiable
+                curReward += eta * s_loss.item()
 
             #Updating curiosity
             prevAction = oldAction

@@ -1,9 +1,7 @@
 import numpy as np
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 from torch.autograd import Variable
-
 
 def normalized_columns_initializer(weights, std=1.0):
     out = torch.randn(weights.size())
@@ -27,7 +25,6 @@ def weights_init(m):
         w_bound = np.sqrt(6. / (fan_in + fan_out))
         m.weight.data.uniform_(-w_bound, w_bound)
         m.bias.data.fill_(0)
-
 
 class A3C_LSTM_GA(torch.nn.Module):
 
@@ -59,6 +56,8 @@ class A3C_LSTM_GA(torch.nn.Module):
         self.lstm = nn.LSTMCell(256, 256)
         self.critic_linear = nn.Linear(256 + self.time_emb_dim, 1)
         self.actor_linear = nn.Linear(256 + self.time_emb_dim, 3)
+        self.relu = nn.ReLU()
+        self.sigmoid = nn.Sigmoid()
 
         # Initializing weights
         self.apply(weights_init)
@@ -77,19 +76,22 @@ class A3C_LSTM_GA(torch.nn.Module):
         x, input_inst, (tx, hx, cx) = inputs
 
         # Get the image representation
-        x = F.relu(self.conv1(x))
-        x = F.relu(self.conv2(x))
-        x_image_rep = F.relu(self.conv3(x))
+        x = self.relu(self.conv1(x))
+        x = self.relu(self.conv2(x))
+        x_image_rep = self.relu(self.conv3(x))
 
         # Get the instruction representation
+        '''
         encoder_hidden = Variable(torch.zeros(1, 1, self.gru_hidden_size))
         for i in range(input_inst.data.size(1)):
             word_embedding = self.embedding(input_inst[0, i]).unsqueeze(0)
-            _, encoder_hidden = self.gru(word_embedding, encoder_hidden)
-        x_instr_rep = encoder_hidden.view(encoder_hidden.size(1), -1)
+            _, encoder_hidden = self.gru(word_embedding, encoder_hidden)'''
+        embedded = self.embedding(input_inst).permute(1, 0, 2)
+        encoder_hidden = Variable(self.gru(embedded)[0][-1]) #Get the last state
+        x_instr_rep = encoder_hidden
 
         # Get the attention vector from the instruction representation
-        x_attention = F.sigmoid(self.attn_linear(x_instr_rep))
+        x_attention = self.sigmoid(self.attn_linear(x_instr_rep))
 
         # Gated-Attention
         x_attention = x_attention.unsqueeze(2).unsqueeze(3)
@@ -99,7 +101,7 @@ class A3C_LSTM_GA(torch.nn.Module):
         x = x.view(x.size(0), -1)
 
         # A3C-LSTM
-        x = F.relu(self.linear(x))
+        x = self.relu(self.linear(x))
         hx, cx = self.lstm(x, (hx, cx))
         time_emb = self.time_emb_layer(tx)
         x = torch.cat((hx, time_emb.view(-1, self.time_emb_dim)), 1)

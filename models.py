@@ -1,38 +1,16 @@
 import numpy as np
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 from torch.autograd import Variable
-
-
-def normalized_columns_initializer(weights, std=1.0):
-    out = torch.randn(weights.size())
-    out *= std / torch.sqrt(out.pow(2).sum(1, keepdim=True).expand_as(out))
-    return out
-
-
-def weights_init(m):
-    classname = m.__class__.__name__
-    if classname.find('Conv') != -1:
-        weight_shape = list(m.weight.data.size())
-        fan_in = np.prod(weight_shape[1:4])
-        fan_out = np.prod(weight_shape[2:4]) * weight_shape[0]
-        w_bound = np.sqrt(6. / (fan_in + fan_out))
-        m.weight.data.uniform_(-w_bound, w_bound)
-        m.bias.data.fill_(0)
-    elif classname.find('Linear') != -1:
-        weight_shape = list(m.weight.data.size())
-        fan_in = weight_shape[1]
-        fan_out = weight_shape[0]
-        w_bound = np.sqrt(6. / (fan_in + fan_out))
-        m.weight.data.uniform_(-w_bound, w_bound)
-        m.bias.data.fill_(0)
-
 
 class A3C_LSTM_GA(torch.nn.Module):
 
     def __init__(self, args):
         super(A3C_LSTM_GA, self).__init__()
+
+        # General
+        self.relu = nn.ReLU()
+        self.sigmoid = nn.Sigmoid()
 
         # Image Processing
         self.conv1 = nn.Conv2d(3, 128, kernel_size=8, stride=4)
@@ -70,17 +48,6 @@ class A3C_LSTM_GA(torch.nn.Module):
         self.forward_linear = nn.Linear(rep_size + 3, 256)
         self.forward_state = nn.Linear(256, rep_size)
 
-        # Initializing weights
-        self.apply(weights_init)
-        self.actor_linear.weight.data = normalized_columns_initializer(
-            self.actor_linear.weight.data, 0.01)
-        self.actor_linear.bias.data.fill_(0)
-        self.critic_linear.weight.data = normalized_columns_initializer(
-            self.critic_linear.weight.data, 1.0)
-        self.critic_linear.bias.data.fill_(0)
-
-        self.lstm.bias_ih.data.fill_(0)
-        self.lstm.bias_hh.data.fill_(0)
         self.train()
 
     #Produces action for state s_t
@@ -88,19 +55,17 @@ class A3C_LSTM_GA(torch.nn.Module):
         x, input_inst, (tx, hx, cx) = inputs
 
         # Get the image representation
-        x = F.relu(self.conv1(x))
-        x = F.relu(self.conv2(x))
-        x_image_rep = F.relu(self.conv3(x))
+        x = self.relu(self.conv1(x))
+        x = self.relu(self.conv2(x))
+        x_image_rep = self.relu(self.conv3(x))
 
         # Get the instruction representation
-        encoder_hidden = Variable(torch.zeros(1, 1, self.gru_hidden_size))
-        for i in range(input_inst.data.size(1)):
-            word_embedding = self.embedding(input_inst[0, i]).unsqueeze(0)
-            _, encoder_hidden = self.gru(word_embedding, encoder_hidden)
-        x_instr_rep = encoder_hidden.view(encoder_hidden.size(1), -1)
+        embedded = self.embedding(input_inst).permute(1,0,2)
+        encoder_hidden = Variable(self.gru(embedded)[0][-1]) #Get last hidden state
+        x_instr_rep = encoder_hidden
 
         # Get the attention vector from the instruction representation
-        x_attention = F.sigmoid(self.attn_linear(x_instr_rep))
+        x_attention = self.sigmoid(self.attn_linear(x_instr_rep))
 
         # Gated-Attention
         x_attention = x_attention.unsqueeze(2).unsqueeze(3)
@@ -110,7 +75,7 @@ class A3C_LSTM_GA(torch.nn.Module):
         x = x.view(x.size(0), -1)
 
         # A3C-LSTM
-        x = F.relu(self.linear(x))
+        x = self.relu(self.linear(x))
         hx, cx = self.lstm(x, (hx, cx))
         time_emb = self.time_emb_layer(tx)
         x = torch.cat((hx, time_emb.view(-1, self.time_emb_dim)), 1)
@@ -124,14 +89,14 @@ class A3C_LSTM_GA(torch.nn.Module):
         s1, s2 = inputs
 
         # Get the image representation for s1
-        s1 = F.relu(self.conv1(s1))
-        s1 = F.relu(self.conv2(s1))
-        s1_image_rep = F.relu(self.conv3(s1)).view(-1)
+        s1 = self.relu(self.conv1(s1))
+        s1 = self.relu(self.conv2(s1))
+        s1_image_rep = self.relu(self.conv3(s1)).view(-1)
 
         # Get the image representation for s2
-        s2 = F.relu(self.conv1(s2))
-        s2 = F.relu(self.conv2(s2))
-        s2_image_rep = F.relu(self.conv3(s2)).view(-1)
+        s2 = self.relu(self.conv1(s2))
+        s2 = self.relu(self.conv2(s2))
+        s2_image_rep = self.relu(self.conv3(s2)).view(-1)
 
         x = torch.cat((s1_image_rep, s2_image_rep))
         x = self.inverse_linear(x)
@@ -148,9 +113,9 @@ class A3C_LSTM_GA(torch.nn.Module):
         s1, a1 = inputs
 
         # Get the image representation for s1
-        s1 = F.relu(self.conv1(s1))
-        s1 = F.relu(self.conv2(s1))
-        s1_image_rep = F.relu(self.conv3(s1)).view(-1)
+        s1 = self.relu(self.conv1(s1))
+        s1 = self.relu(self.conv2(s1))
+        s1_image_rep = self.relu(self.conv3(s1)).view(-1)
 
         a1 = a1.view(-1) 
         x = torch.cat((s1_image_rep, a1))
@@ -160,9 +125,9 @@ class A3C_LSTM_GA(torch.nn.Module):
         return x
 
     def getImageRep(self, s):
-        s = F.relu(self.conv1(s))
-        s = F.relu(self.conv2(s))
-        s_image_rep = F.relu(self.conv3(s)).view(-1)
+        s = self.relu(self.conv1(s))
+        s = self.relu(self.conv2(s))
+        s_image_rep = self.relu(self.conv3(s)).view(-1)
         return s_image_rep
 
     def forward(self, inputs, teacher=True, inverse=True):

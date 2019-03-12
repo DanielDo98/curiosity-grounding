@@ -25,6 +25,7 @@ def test(rank, args, shared_model):
             torch.load(args.load, map_location=lambda storage, loc: storage))
 
     model.eval()
+    torch.set_grad_enabled(False)
 
     (image, instruction), _, _, _ = env.reset()
 
@@ -59,19 +60,18 @@ def test(rank, args, shared_model):
             if (args.evaluate == 0):
                 model.load_state_dict(shared_model.state_dict())
 
-            cx = Variable(torch.zeros(1, 256), volatile=True)
-            hx = Variable(torch.zeros(1, 256), volatile=True)
+            cx = Variable(torch.zeros(1, 256))
+            hx = Variable(torch.zeros(1, 256))
         else:
-            cx = Variable(cx.data, volatile=True)
-            hx = Variable(hx.data, volatile=True)
+            cx = Variable(cx.data)
+            hx = Variable(hx.data)
 
-        tx = Variable(torch.from_numpy(np.array([episode_length])).long(),
-                      volatile=True)
+        tx = Variable(torch.from_numpy(np.array([episode_length])).long())
 
         value, logit, (hx, cx) = model(
-                (Variable(image.unsqueeze(0), volatile=True),
-                 Variable(instruction_idx, volatile=True), (tx, hx, cx)))
-        prob = F.softmax(logit)
+                (Variable(image.unsqueeze(0)),
+                 Variable(instruction_idx), (tx, hx, cx)))
+        prob = F.softmax(logit, dim=1)
         action = prob.max(1)[1].data.numpy()
 
         (image, _), reward, done,  _ = env.step(action[0])

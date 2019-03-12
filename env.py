@@ -45,7 +45,7 @@ class GroundingEnv:
         """Starts the doom game engine."""
         game = DoomGame()
         game = set_doom_configuration(game, self.params)
-        game.set_window_visible(False) #For now
+        game.set_window_visible(True) #For now
         game.init()
         self.game = game
 
@@ -321,7 +321,7 @@ class GroundingEnv:
         return correct_objects
 
     def get_instr(self, filename):
-        with open(filename, 'rb') as f:
+        with open(filename, 'r') as f:
             instructions = json.load(f)
         return instructions
 
