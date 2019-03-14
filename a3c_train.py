@@ -98,10 +98,7 @@ def train(rank, args, shared_model):
             oldAction = action
 
             action = action.numpy()[0, 0]
-            curReward = 0
             (image, _), reward, done,  _ = env.step(action)
-            curReward += reward
-           
 
             done = done or episode_length >= args.max_episode_length
 
@@ -116,7 +113,6 @@ def train(rank, args, shared_model):
 
             image = torch.from_numpy(image).float()/255.0
 
-            curReward = 0
             #curiosity loss and reward
             if prevAction is not None:
                 pred_action = model((Variable(prevState.unsqueeze(0)),
@@ -132,7 +128,7 @@ def train(rank, args, shared_model):
 
                 s_loss = 1/2 * torch.norm(pred_state - model.getImageRep(Variable(image.unsqueeze(0))))
                 policy_loss += (1-beta) * a_loss + beta * s_loss
-                curReward += eta * s_loss.item()
+                #curReward += eta * s_loss.item()
 
             #Updating curiosity
             prevAction = oldAction
@@ -140,7 +136,7 @@ def train(rank, args, shared_model):
 
             values.append(value) #critic in actor-critic
             log_probs.append(log_prob)
-            rewards.append(curReward) #+2 if found, -.1 if not found, plus intrinsic
+            rewards.append(reward) #+2 if found, -.1 if not found, plus intrinsic
 
             if done:
                 break

@@ -45,7 +45,7 @@ class GroundingEnv:
         """Starts the doom game engine."""
         game = DoomGame()
         game = set_doom_configuration(game, self.params)
-        game.set_window_visible(True)
+        game.set_window_visible(False)
         game.init()
         self.game = game
 
