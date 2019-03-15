@@ -30,7 +30,8 @@ class A3C_LSTM_GA(torch.nn.Module):
         # max episode length is 30 by default.
         self.time_emb_dim = 32
         self.time_emb_layer = nn.Embedding(
-                args.max_episode_length+1,
+                300 + 1,  #This is because we train with a higher max episode length
+                #args.max_episode_length+1,
                 self.time_emb_dim)
 
         # Action embedding
@@ -76,6 +77,8 @@ class A3C_LSTM_GA(torch.nn.Module):
         # Gated-Attention
         x_attention = x_attention.unsqueeze(2).unsqueeze(3)
         x_attention = x_attention.expand(5, 64, 8, 17)
+        print(x_attention.shape)
+        print(x_image_rep.size())
         assert x_image_rep.size() == x_attention.size()
         x = x_image_rep*x_attention
         #Concatentation as suggested by Manning

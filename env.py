@@ -46,7 +46,7 @@ class GroundingEnv:
         """Starts the doom game engine."""
         game = DoomGame()
         game = set_doom_configuration(game, self.params)
-        game.set_window_visible(False)
+        game.set_window_visible(True)
         game.init()
         self.game = game
 
@@ -144,7 +144,7 @@ class GroundingEnv:
         # Repeat the action for 5 frames.
         if self.params.visualize:
             # Render 5 frames for better visualization.
-            for _ in range(5):
+            for _ in range(4):
                 self.game.make_action(actions[action_id], 1)
                 screen = self.game.get_state().screen_buffer
                 screen_buf = process_screen(
