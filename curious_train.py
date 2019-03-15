@@ -1,5 +1,6 @@
 import torch.optim as optim
-import env as grounding_env
+import curious_env as grounding_env #Touching any object causes a reward.
+#Timesteps don't decrease reward by default.
 
 from models import *
 from torch.autograd import Variable
@@ -14,7 +15,7 @@ def ensure_shared_grads(model, shared_model):
             return
         shared_param._grad = param.grad
 
-#Let the actor play in the environment. Reward for learning about object and for curiosity.
+#Let the actor play in the environment. Rewards for curiosity and touching objects.
 def train(rank, args, shared_model):
     torch.manual_seed(args.seed + rank)
 
@@ -35,19 +36,17 @@ def train(rank, args, shared_model):
     p_losses = []
     v_losses = []
 
-    (images, instruction), _, _, _ = env.reset()
+    (images, _), _, _, _ = env.reset() #We don't need instructions while pretraining
 
     images = torch.from_numpy(np.stack(images)).float()/255.0
     done = True
 
-    '''
     #Curiosity bookkeeping
     prevState = images
     prevAction = None
-    beta = .2
-    lamb = .2 #TODO tune this. Language grounding is important
-    #eta = 1 #TODO tune this hyperparameter
-    '''
+    beta = .2 #As in pathak
+    lamb = .2 #Reward for stumbling into an object. TODO tune this
+    #eta = 1 
 
 
     episode_length = 0
@@ -77,10 +76,9 @@ def train(rank, args, shared_model):
             episode_length += 1
             tx = Variable(torch.from_numpy(np.array([episode_length])).long())
 
-            value, logit, (hx, cx) = model((Variable(images),
-                                            Variable(instruction_idx),
-                                            (tx, hx, cx)), teacher=True, inverse=False)
-            prob = F.softmax(logit, dim=1)
+            value, logit, (hx, cx) = model((Variable(images), 0,
+                                            (tx, hx, cx)), teacher=False, inverse=False, curious=True)
+            prob = F.softmax(logit, dim=0)
             log_prob = F.log_softmax(logit, dim=1)
             entropy = -(log_prob * prob).sum(1)
             entropies.append(entropy) 
@@ -97,37 +95,29 @@ def train(rank, args, shared_model):
 
             if done:
                 (images, instruction), _, _, _ = env.reset()
-                instruction_idx = []
-                for word in instruction.split(" "):
-                    instruction_idx.append(env.word_to_idx[word])
-                instruction_idx = np.array(instruction_idx)
-                instruction_idx = torch.from_numpy(
-                        instruction_idx).view(1, -1)
             
             #We stack now because we take in last 5 images.
             images = torch.from_numpy(np.stack(images)).float()/255.0
 
-            #curiosity loss and reward. This is done in pretraining now.
-            '''
+            #curiosity loss and reward
             if prevAction is not None:
                 pred_action = model((Variable(prevState),
                                 Variable(images)), 
                                 teacher=False, inverse=True)
-                a_prob = F.softmax(pred_action) 
+                a_prob = F.softmax(pred_action, dim=0)
                 a_loss = 1/2 * torch.norm(a_prob - prob)
                 #Because we have access to softmax, might as well use it TODO
                 #actionTensor = torch.eye(3)[prevAction[0]]
 
-                pred_state = model((Variable(prevState), prevAction[0]), teacher=False, inverse=False)
+                pred_state = model((Variable(prevState), prevAction[0]), teacher=False, inverse=False, curious=False)
                 #We are predicting final next state
                 s_loss = 1/2 * torch.norm(pred_state - model.getImageRep(Variable(images[-1].unsqueeze(0))))
                 policy_loss += (1-beta) * a_loss + beta * s_loss
-                #curReward += eta * s_loss.item()
+                #curReward += eta * s_loss.item() Don't need this because curiosity is factored into loss
 
             #Updating curiosity
             prevAction = oldAction
             prevState = images
-            '''
 
             values.append(value) #critic in actor-critic
             log_probs.append(log_prob)
@@ -139,9 +129,8 @@ def train(rank, args, shared_model):
         R = torch.zeros(1,1)
         if not done:
             tx = Variable(torch.from_numpy(np.array([episode_length])).long())
-            value, _, _ = model((Variable(images),
-                                 Variable(instruction_idx), (tx, hx, cx)),
-                                 teacher=True, inverse=False)
+            value, _, _ = model((Variable(images), 0, (tx, hx, cx)),
+                                 teacher=False, inverse=False, curious=True)
             R = value.data
 
         values.append(Variable(R))
@@ -184,7 +173,7 @@ def train(rank, args, shared_model):
             v_losses = []
 
         (policy_loss + 0.5 * value_loss).backward()
-        torch.nn.utils.clip_grad_norm(model.parameters(), 40)
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 40)
 
         ensure_shared_grads(model, shared_model)
         optimizer.step()

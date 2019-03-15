@@ -8,16 +8,18 @@ import torch.multiprocessing as mp
 
 import env as grounding_env
 from models import A3C_LSTM_GA
-from a3c_train import train
-from a3c_test import test
+from curious_train import train
+from curious_test import test
 
 import logging
 
 parser = argparse.ArgumentParser(description='Gated-Attention for Grounding')
 
 # Environment arguments
-parser.add_argument('-l', '--max-episode-length', type=int, default=30,
-                    help='maximum length of an episode (default: 30)')
+
+#More time to play around in the environment.
+parser.add_argument('-l', '--max-episode-length', type=int, default=300,
+                    help='maximum length of an episode (default: 300)')
 parser.add_argument('-d', '--difficulty', type=str, default="hard",
                     help="""Difficulty of the environment,
                     "easy", "medium" or "hard" (default: hard)""")
@@ -69,9 +71,8 @@ parser.add_argument('-n', '--num-processes', type=int, default=4, metavar='N',
                     help='how many training processes to use (default: 4)')
 parser.add_argument('--num-steps', type=int, default=20, metavar='NS',
                     help='number of forward steps in A3C (default: 20)')
-#By default, load the curiosity module
-parser.add_argument('--load', type=str, default="1",
-                    help='model path to load, 0 to not reload (default: 1)')
+parser.add_argument('--load', type=str, default="0",
+                    help='model path to load, 0 to not reload (default: 0)')
 parser.add_argument('-e', '--evaluate', type=int, default=0,
                     help="""0:Train, 1:Evaluate MultiTask Generalization
                     2:Evaluate Zero-shot Generalization (default: 0)""")
@@ -122,7 +123,7 @@ if __name__ == '__main__':
 
     # Start the training thread(s)
     for rank in range(0, args.num_processes):
-        p = mp.Process(target=train, args=(rank, args, shared_model))
+        p = mp.Process(target=train, args=(rank, args, shared_model)) 
         p.start()
         processes.append(p)
     for p in processes:

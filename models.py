@@ -33,20 +33,26 @@ class A3C_LSTM_GA(torch.nn.Module):
                 args.max_episode_length+1,
                 self.time_emb_dim)
 
-        rep_size = 64 * 8 * 17
+        # Action embedding
+        self.action_emb_dim = 8
+        self.action_emb_layer = nn.Embedding(3, self.action_emb_dim) #Map from action to embedding
+
+        self.frame_size = 64 * 8 * 17
+        self.cnn_out_size = 5 * self.frame_size
+        self.rep_size = 2 * self.cnn_out_size + self.gru_hidden_size
         # A3C-LSTM layers
-        self.linear = nn.Linear(rep_size, 256)
-        self.lstm = nn.LSTMCell(256, 256)
+        self.linear = nn.Linear(self.rep_size, 384)
+        self.lstm = nn.LSTMCell(384, 256)
         self.critic_linear = nn.Linear(256 + self.time_emb_dim, 1)
         self.actor_linear = nn.Linear(256 + self.time_emb_dim, 3)
 
         #Inverse dynamic model
-        self.inverse_linear = nn.Linear(2 * rep_size, 256)
-        self.inverse_actor = nn.Linear(256, 3) #3 different actions for now TODO
+        self.inverse_linear = nn.Linear(2 * self.cnn_out_size, 256)
+        self.inverse_actor = nn.Linear(256, 3)
 
-        #Forward dynamic model. action is 1-hot
-        self.forward_linear = nn.Linear(rep_size + 3, 256)
-        self.forward_state = nn.Linear(256, rep_size)
+        #Forward dynamic model. Action is embedded in 8-dim vector. Model predicts next final FRAME, not next 5 frames
+        self.forward_linear = nn.Linear(self.cnn_out_size + self.action_emb_dim, 256)
+        self.forward_state = nn.Linear(256, self.frame_size)
 
         self.train()
 
@@ -69,10 +75,11 @@ class A3C_LSTM_GA(torch.nn.Module):
 
         # Gated-Attention
         x_attention = x_attention.unsqueeze(2).unsqueeze(3)
-        x_attention = x_attention.expand(1, 64, 8, 17)
+        x_attention = x_attention.expand(5, 64, 8, 17)
         assert x_image_rep.size() == x_attention.size()
         x = x_image_rep*x_attention
-        x = x.view(x.size(0), -1)
+        #Concatentation as suggested by Manning
+        x = torch.cat((x.view(-1), x_image_rep.view(-1), x_instr_rep.view(-1))).unsqueeze(0)
 
         # A3C-LSTM
         x = self.relu(self.linear(x))
@@ -102,10 +109,10 @@ class A3C_LSTM_GA(torch.nn.Module):
         x = self.inverse_linear(x)
         x = self.inverse_actor(x)
         
-        return x #this is logits for action
+        return x #this is logits over action. Embedding is just to process action.
 
     '''
-    Predicts s_{t+1} given s_t and a_t. a_t is a tensor of (#actions,)
+    Predicts s_{t+1} given s_t and a_t. 0 < a_t < #actions
     Both s_t and a_t are variables
     #actions is 3 for now
     '''
@@ -117,8 +124,9 @@ class A3C_LSTM_GA(torch.nn.Module):
         s1 = self.relu(self.conv2(s1))
         s1_image_rep = self.relu(self.conv3(s1)).view(-1)
 
-        a1 = a1.view(-1) 
+        a1 = self.action_emb_layer(a1).view(-1)
         x = torch.cat((s1_image_rep, a1))
+
         x = self.forward_linear(x)
         x = self.forward_state(x)
         
@@ -129,11 +137,36 @@ class A3C_LSTM_GA(torch.nn.Module):
         s = self.relu(self.conv2(s))
         s_image_rep = self.relu(self.conv3(s)).view(-1)
         return s_image_rep
+    
+    #Similar to teacherForward, but sets attention and instruction representation to 0.
+    def curiousForward(self, inputs):
+        x, _, (tx, hx, cx) = inputs
 
-    def forward(self, inputs, teacher=True, inverse=True):
+        # Get the image representation
+        x = self.relu(self.conv1(x))
+        x = self.relu(self.conv2(x))
+        x_image_rep = self.relu(self.conv3(x))
+
+        # Attention and instruction representation start out as 0
+        x_instr_rep = torch.zeros((self.gru_hidden_size))
+        x = torch.zeros((self.cnn_out_size))
+        x = torch.cat((x.view(-1), x_image_rep.view(-1), x_instr_rep.view(-1))).unsqueeze(0)
+
+        # A3C-LSTM
+        x = self.relu(self.linear(x))
+        hx, cx = self.lstm(x, (hx, cx))
+        time_emb = self.time_emb_layer(tx)
+        x = torch.cat((hx, time_emb.view(-1, self.time_emb_dim)), 1)
+
+        return self.critic_linear(x), self.actor_linear(x), (hx, cx)
+        
+
+    def forward(self, inputs, teacher=True, inverse=True, curious=True):
         if teacher:
             return self.teacherForward(inputs)
         elif inverse:
             return self.inverseDynamicsForward(inputs)
-        else:
+        elif not curious:
             return self.forwardDynamicsForward(inputs)
+        else:
+            return self.curiousForward(inputs)
