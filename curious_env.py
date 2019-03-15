@@ -184,28 +184,17 @@ class GroundingEnv:
     def close(self):
         self.game.close()
 
+    #We reward touching any object while in curiosity phase
     def get_reward(self):
         """Get the reward received by the agent in the last time step."""
-        # If agent reached the correct object, reward = +1.
-        # If agent reach a wrong object, reward = -0.2.
-        # Otherwise, reward = living_reward.
         self.agent_x, self.agent_y = get_agent_location(self.game)
-        target_location = self.object_coordinates[self.correct_location]
-        dist = get_l2_distance(self.agent_x, self.agent_y,
-                               target_location.x, target_location.y)
-        if dist <= REWARD_THRESHOLD_DISTANCE:
-            reward = CORRECT_OBJECT_REWARD
-            return reward
-        else:
-            for i, object_location in enumerate(self.object_coordinates):
-                if i == self.correct_location:
-                    continue
-                dist = get_l2_distance(self.agent_x, self.agent_y,
-                                       object_location.x, object_location.y)
-                if dist <= REWARD_THRESHOLD_DISTANCE:
-                    reward = WRONG_OBJECT_REWARD
-                    return reward
-            reward = self.params.living_reward
+        reward = 0
+        for i, object_location in enumerate(self.object_coordinates):
+            dist = get_l2_distance(self.agent_x, self.agent_y,
+                                   object_location.x, object_location.y)
+            if dist <= REWARD_THRESHOLD_DISTANCE:
+                reward += CORRECT_OBJECT_REWARD
+        #reward = self.params.living_reward
 
         return reward
 
