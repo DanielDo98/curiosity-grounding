@@ -3225,3 +3225,327 @@ INFO:root:Training thread: 35 Num iters: 46K Avg policy loss: -0.196014285087585
 INFO:root:Training thread: 19 Num iters: 49K Avg policy loss: -0.1676129400730133 Avg value loss: 0.4456197917461395
 INFO:root:Training thread: 7 Num iters: 51K Avg policy loss: -0.1643725484609604 Avg value loss: 0.49490323662757874
 INFO:root:Time 17h 05m 42s, Avg Reward 0.42, Avg Accuracy 0.44, Avg Ep length 22.7, Best Reward 0.5159999999999999
+INFO:root:Time 17h 07m 46s, Avg Reward 0.27599999999999997, Avg Accuracy 0.32, Avg Ep length 21.32, Best Reward 0.5159999999999999
+INFO:root:Training thread: 27 Num iters: 52K Avg policy loss: -0.02366851642727852 Avg value loss: 0.4986957907676697
+INFO:root:Training thread: 33 Num iters: 53K Avg policy loss: -0.21869541704654694 Avg value loss: 0.5428956151008606
+INFO:root:Time 17h 09m 52s, Avg Reward 0.428, Avg Accuracy 0.46, Avg Ep length 22.04, Best Reward 0.5159999999999999
+INFO:root:Time 17h 12m 03s, Avg Reward 0.4759999999999999, Avg Accuracy 0.5, Avg Ep length 21.98, Best Reward 0.5159999999999999
+INFO:root:Training thread: 6 Num iters: 52K Avg policy loss: -0.1481449156999588 Avg value loss: 0.4540422260761261
+INFO:root:Training thread: 26 Num iters: 51K Avg policy loss: -0.1031893938779831 Avg value loss: 0.4757463037967682
+INFO:root:Training thread: 38 Num iters: 53K Avg policy loss: -0.0960041880607605 Avg value loss: 0.420171320438385
+INFO:root:Training thread: 0 Num iters: 51K Avg policy loss: -0.24961796402931213 Avg value loss: 0.4527835547924042
+INFO:root:Training thread: 34 Num iters: 50K Avg policy loss: -0.1342444270849228 Avg value loss: 0.5073826909065247
+INFO:root:Training thread: 37 Num iters: 52K Avg policy loss: -0.21087555587291718 Avg value loss: 0.46181678771972656
+INFO:root:Time 17h 14m 12s, Avg Reward 0.524, Avg Accuracy 0.54, Avg Ep length 20.92, Best Reward 0.5159999999999999
+INFO:root:Training thread: 13 Num iters: 51K Avg policy loss: -0.3015131950378418 Avg value loss: 0.4726613163948059
+INFO:root:Time 17h 16m 14s, Avg Reward 0.256, Avg Accuracy 0.3, Avg Ep length 22.54, Best Reward 0.524
+INFO:root:Training thread: 36 Num iters: 49K Avg policy loss: -0.3402389585971832 Avg value loss: 0.4526126980781555
+INFO:root:Training thread: 28 Num iters: 49K Avg policy loss: -0.26698511838912964 Avg value loss: 0.4542972147464752
+INFO:root:Training thread: 9 Num iters: 50K Avg policy loss: -0.20050901174545288 Avg value loss: 0.4873407185077667
+INFO:root:Time 17h 18m 21s, Avg Reward 0.3440000000000001, Avg Accuracy 0.38, Avg Ep length 22.16, Best Reward 0.524
+INFO:root:Training thread: 8 Num iters: 49K Avg policy loss: -0.09787214547395706 Avg value loss: 0.44247597455978394
+INFO:root:Time 17h 20m 28s, Avg Reward 0.408, Avg Accuracy 0.44, Avg Ep length 20.02, Best Reward 0.524
+INFO:root:Time 17h 22m 38s, Avg Reward 0.276, Avg Accuracy 0.3, Avg Ep length 23.94, Best Reward 0.524
+INFO:root:Time 17h 24m 37s, Avg Reward 0.46, Avg Accuracy 0.48, Avg Ep length 21.02, Best Reward 0.524
+INFO:root:Training thread: 14 Num iters: 51K Avg policy loss: -0.27445992827415466 Avg value loss: 0.4600549638271332
+INFO:root:Training thread: 29 Num iters: 50K Avg policy loss: -0.09183308482170105 Avg value loss: 0.40834587812423706
+INFO:root:Time 17h 26m 40s, Avg Reward 0.41200000000000003, Avg Accuracy 0.44, Avg Ep length 22.46, Best Reward 0.524
+INFO:root:Training thread: 24 Num iters: 52K Avg policy loss: -0.21063104271888733 Avg value loss: 0.4444839358329773
+INFO:root:Time 17h 28m 56s, Avg Reward 0.24, Avg Accuracy 0.3, Avg Ep length 22.72, Best Reward 0.524
+INFO:root:Training thread: 23 Num iters: 50K Avg policy loss: -0.14713478088378906 Avg value loss: 0.40680912137031555
+INFO:root:Training thread: 4 Num iters: 52K Avg policy loss: -0.154259592294693 Avg value loss: 0.49739980697631836
+INFO:root:Training thread: 16 Num iters: 52K Avg policy loss: -0.16404005885124207 Avg value loss: 0.44790327548980713
+INFO:root:Time 17h 31m 06s, Avg Reward 0.412, Avg Accuracy 0.44, Avg Ep length 22.92, Best Reward 0.524
+INFO:root:Time 17h 33m 18s, Avg Reward 0.384, Avg Accuracy 0.4, Avg Ep length 23.92, Best Reward 0.524
+INFO:root:Training thread: 17 Num iters: 51K Avg policy loss: -0.21580111980438232 Avg value loss: 0.4709017872810364
+INFO:root:Time 17h 35m 28s, Avg Reward 0.5359999999999999, Avg Accuracy 0.56, Avg Ep length 20.7, Best Reward 0.524
+INFO:root:Time 17h 37m 22s, Avg Reward 0.46399999999999997, Avg Accuracy 0.5, Avg Ep length 20.48, Best Reward 0.5359999999999999
+INFO:root:Training thread: 18 Num iters: 51K Avg policy loss: -0.33172497153282166 Avg value loss: 0.44143423438072205
+INFO:root:Training thread: 2 Num iters: 52K Avg policy loss: -0.3344094753265381 Avg value loss: 0.43922460079193115
+INFO:root:Time 17h 39m 30s, Avg Reward 0.48400000000000004, Avg Accuracy 0.52, Avg Ep length 20.14, Best Reward 0.5359999999999999
+INFO:root:Training thread: 30 Num iters: 52K Avg policy loss: -0.14771288633346558 Avg value loss: 0.4813641607761383
+INFO:root:Time 17h 41m 26s, Avg Reward 0.504, Avg Accuracy 0.52, Avg Ep length 21.3, Best Reward 0.5359999999999999
+INFO:root:Training thread: 5 Num iters: 52K Avg policy loss: -0.16590799391269684 Avg value loss: 0.4256455600261688
+INFO:root:Training thread: 32 Num iters: 51K Avg policy loss: -0.22375573217868805 Avg value loss: 0.4703502058982849
+INFO:root:Training thread: 3 Num iters: 50K Avg policy loss: -0.1911267191171646 Avg value loss: 0.43466126918792725
+INFO:root:Training thread: 39 Num iters: 50K Avg policy loss: -0.13200952112674713 Avg value loss: 0.4097849130630493
+INFO:root:Time 17h 43m 37s, Avg Reward 0.38, Avg Accuracy 0.42, Avg Ep length 21.18, Best Reward 0.5359999999999999
+INFO:root:Training thread: 12 Num iters: 53K Avg policy loss: -0.19101625680923462 Avg value loss: 0.44015347957611084
+INFO:root:Training thread: 22 Num iters: 52K Avg policy loss: -0.12707950174808502 Avg value loss: 0.3727535307407379
+INFO:root:Time 17h 45m 45s, Avg Reward 0.5, Avg Accuracy 0.52, Avg Ep length 20.26, Best Reward 0.5359999999999999
+INFO:root:Training thread: 10 Num iters: 52K Avg policy loss: -0.36362603306770325 Avg value loss: 0.4563373625278473
+INFO:root:Training thread: 15 Num iters: 54K Avg policy loss: -0.24140293896198273 Avg value loss: 0.4515516757965088
+INFO:root:Time 17h 47m 47s, Avg Reward 0.32799999999999996, Avg Accuracy 0.38, Avg Ep length 20.14, Best Reward 0.5359999999999999
+INFO:root:Training thread: 21 Num iters: 53K Avg policy loss: -0.29705074429512024 Avg value loss: 0.43026065826416016
+INFO:root:Training thread: 25 Num iters: 51K Avg policy loss: -0.1547931730747223 Avg value loss: 0.4260452687740326
+INFO:root:Training thread: 31 Num iters: 51K Avg policy loss: -0.2812002897262573 Avg value loss: 0.4552593529224396
+INFO:root:Time 17h 49m 45s, Avg Reward 0.35200000000000004, Avg Accuracy 0.4, Avg Ep length 19.72, Best Reward 0.5359999999999999
+INFO:root:Training thread: 20 Num iters: 51K Avg policy loss: -0.39960044622421265 Avg value loss: 0.4338802695274353
+INFO:root:Training thread: 1 Num iters: 51K Avg policy loss: 0.011033725924789906 Avg value loss: 0.42072102427482605
+INFO:root:Time 17h 52m 03s, Avg Reward 0.4, Avg Accuracy 0.46, Avg Ep length 19.36, Best Reward 0.5359999999999999
+INFO:root:Training thread: 11 Num iters: 50K Avg policy loss: -0.1615491807460785 Avg value loss: 0.4661181569099426
+INFO:root:Training thread: 7 Num iters: 52K Avg policy loss: -0.23020470142364502 Avg value loss: 0.41878098249435425
+INFO:root:Time 17h 54m 14s, Avg Reward 0.24799999999999997, Avg Accuracy 0.28, Avg Ep length 24.0, Best Reward 0.5359999999999999
+INFO:root:Training thread: 27 Num iters: 53K Avg policy loss: -0.2694627642631531 Avg value loss: 0.47120511531829834
+INFO:root:Training thread: 33 Num iters: 54K Avg policy loss: -0.16393031179904938 Avg value loss: 0.44700348377227783
+INFO:root:Time 17h 56m 19s, Avg Reward 0.26, Avg Accuracy 0.32, Avg Ep length 22.74, Best Reward 0.5359999999999999
+INFO:root:Training thread: 19 Num iters: 50K Avg policy loss: -0.12774130702018738 Avg value loss: 0.4956005811691284
+INFO:root:Time 17h 58m 24s, Avg Reward 0.44800000000000006, Avg Accuracy 0.5, Avg Ep length 19.72, Best Reward 0.5359999999999999
+INFO:root:Training thread: 35 Num iters: 47K Avg policy loss: -0.28268131613731384 Avg value loss: 0.4817647635936737
+INFO:root:Training thread: 38 Num iters: 54K Avg policy loss: -0.17377102375030518 Avg value loss: 0.43024784326553345
+INFO:root:Training thread: 6 Num iters: 53K Avg policy loss: -0.2122439444065094 Avg value loss: 0.4346029460430145
+INFO:root:Time 18h 00m 28s, Avg Reward 0.4159999999999999, Avg Accuracy 0.44, Avg Ep length 22.54, Best Reward 0.5359999999999999
+INFO:root:Training thread: 37 Num iters: 53K Avg policy loss: -0.2858807146549225 Avg value loss: 0.42784583568573
+INFO:root:Training thread: 0 Num iters: 52K Avg policy loss: -0.14187346398830414 Avg value loss: 0.41735464334487915
+INFO:root:Training thread: 26 Num iters: 52K Avg policy loss: -0.2598281502723694 Avg value loss: 0.4482342302799225
+INFO:root:Time 18h 02m 32s, Avg Reward 0.38799999999999996, Avg Accuracy 0.44, Avg Ep length 20.3, Best Reward 0.5359999999999999
+INFO:root:Training thread: 13 Num iters: 52K Avg policy loss: -0.2963676154613495 Avg value loss: 0.48574838042259216
+INFO:root:Time 18h 04m 37s, Avg Reward 0.524, Avg Accuracy 0.58, Avg Ep length 17.9, Best Reward 0.5359999999999999
+INFO:root:Training thread: 34 Num iters: 51K Avg policy loss: -0.15925811231136322 Avg value loss: 0.4863698184490204
+INFO:root:Time 18h 06m 48s, Avg Reward 0.392, Avg Accuracy 0.44, Avg Ep length 21.0, Best Reward 0.5359999999999999
+INFO:root:Training thread: 9 Num iters: 51K Avg policy loss: -0.31740105152130127 Avg value loss: 0.4690772294998169
+INFO:root:Training thread: 28 Num iters: 50K Avg policy loss: -0.18661092221736908 Avg value loss: 0.42280083894729614
+INFO:root:Time 18h 08m 52s, Avg Reward 0.46, Avg Accuracy 0.5, Avg Ep length 21.1, Best Reward 0.5359999999999999
+INFO:root:Training thread: 36 Num iters: 50K Avg policy loss: -0.20261362195014954 Avg value loss: 0.4596387445926666
+INFO:root:Training thread: 8 Num iters: 50K Avg policy loss: -0.26896992325782776 Avg value loss: 0.4610431492328644
+INFO:root:Time 18h 10m 51s, Avg Reward 0.38, Avg Accuracy 0.42, Avg Ep length 22.2, Best Reward 0.5359999999999999
+INFO:root:Time 18h 12m 53s, Avg Reward 0.424, Avg Accuracy 0.46, Avg Ep length 20.48, Best Reward 0.5359999999999999
+INFO:root:Training thread: 14 Num iters: 52K Avg policy loss: -0.1403011828660965 Avg value loss: 0.48134008049964905
+INFO:root:Training thread: 29 Num iters: 51K Avg policy loss: -0.04251245781779289 Avg value loss: 0.46135208010673523
+INFO:root:Time 18h 15m 04s, Avg Reward 0.26, Avg Accuracy 0.28, Avg Ep length 23.76, Best Reward 0.5359999999999999
+INFO:root:Training thread: 24 Num iters: 53K Avg policy loss: -0.24380968511104584 Avg value loss: 0.5120538473129272
+INFO:root:Time 18h 17m 13s, Avg Reward 0.48, Avg Accuracy 0.5, Avg Ep length 20.36, Best Reward 0.5359999999999999
+INFO:root:Training thread: 4 Num iters: 53K Avg policy loss: 0.002584421308711171 Avg value loss: 0.4913470149040222
+INFO:root:Training thread: 16 Num iters: 53K Avg policy loss: -0.2546079456806183 Avg value loss: 0.5011059641838074
+INFO:root:Time 18h 19m 14s, Avg Reward 0.49599999999999994, Avg Accuracy 0.54, Avg Ep length 19.78, Best Reward 0.5359999999999999
+INFO:root:Training thread: 23 Num iters: 51K Avg policy loss: -0.32544779777526855 Avg value loss: 0.514330267906189
+INFO:root:Time 18h 21m 19s, Avg Reward 0.38799999999999996, Avg Accuracy 0.42, Avg Ep length 21.84, Best Reward 0.5359999999999999
+INFO:root:Training thread: 17 Num iters: 52K Avg policy loss: -0.4580463171005249 Avg value loss: 0.49324384331703186
+INFO:root:Time 18h 23m 19s, Avg Reward 0.488, Avg Accuracy 0.52, Avg Ep length 19.88, Best Reward 0.5359999999999999
+INFO:root:Time 18h 25m 20s, Avg Reward 0.588, Avg Accuracy 0.6, Avg Ep length 20.76, Best Reward 0.5359999999999999
+INFO:root:Training thread: 18 Num iters: 52K Avg policy loss: -0.19907942414283752 Avg value loss: 0.4788944125175476
+INFO:root:Training thread: 2 Num iters: 53K Avg policy loss: -0.37976714968681335 Avg value loss: 0.4638761281967163
+INFO:root:Time 18h 27m 23s, Avg Reward 0.48800000000000004, Avg Accuracy 0.52, Avg Ep length 20.7, Best Reward 0.588
+INFO:root:Training thread: 30 Num iters: 53K Avg policy loss: -0.32525694370269775 Avg value loss: 0.45667001605033875
+INFO:root:Time 18h 29m 35s, Avg Reward 0.436, Avg Accuracy 0.46, Avg Ep length 23.02, Best Reward 0.588
+INFO:root:Training thread: 5 Num iters: 53K Avg policy loss: -0.20985189080238342 Avg value loss: 0.4966696500778198
+INFO:root:Training thread: 32 Num iters: 52K Avg policy loss: -0.21433301270008087 Avg value loss: 0.48933282494544983
+INFO:root:Time 18h 31m 50s, Avg Reward 0.332, Avg Accuracy 0.38, Avg Ep length 22.32, Best Reward 0.588
+INFO:root:Training thread: 12 Num iters: 54K Avg policy loss: -0.2619806230068207 Avg value loss: 0.5006740093231201
+INFO:root:Training thread: 22 Num iters: 53K Avg policy loss: -0.17316807806491852 Avg value loss: 0.46178844571113586
+INFO:root:Training thread: 39 Num iters: 51K Avg policy loss: -0.124384306371212 Avg value loss: 0.4597466289997101
+INFO:root:Training thread: 15 Num iters: 55K Avg policy loss: -0.4317633807659149 Avg value loss: 0.5089479684829712
+INFO:root:Training thread: 3 Num iters: 51K Avg policy loss: -0.3814731538295746 Avg value loss: 0.43543770909309387
+INFO:root:Time 18h 33m 58s, Avg Reward 0.41600000000000004, Avg Accuracy 0.46, Avg Ep length 20.4, Best Reward 0.588
+INFO:root:Training thread: 10 Num iters: 53K Avg policy loss: -0.18531882762908936 Avg value loss: 0.4511234164237976
+INFO:root:Training thread: 21 Num iters: 54K Avg policy loss: -0.2752477526664734 Avg value loss: 0.4471551477909088
+INFO:root:Time 18h 36m 08s, Avg Reward 0.276, Avg Accuracy 0.32, Avg Ep length 22.5, Best Reward 0.588
+INFO:root:Training thread: 31 Num iters: 52K Avg policy loss: -0.2356879860162735 Avg value loss: 0.47614336013793945
+INFO:root:Time 18h 38m 15s, Avg Reward 0.46, Avg Accuracy 0.5, Avg Ep length 18.48, Best Reward 0.588
+INFO:root:Training thread: 25 Num iters: 52K Avg policy loss: -0.1281171292066574 Avg value loss: 0.5260248780250549
+INFO:root:Training thread: 20 Num iters: 52K Avg policy loss: -0.21352913975715637 Avg value loss: 0.48751088976860046
+INFO:root:Time 18h 40m 22s, Avg Reward 0.556, Avg Accuracy 0.58, Avg Ep length 20.76, Best Reward 0.588
+INFO:root:Training thread: 7 Num iters: 53K Avg policy loss: -0.24169223010540009 Avg value loss: 0.5293712615966797
+INFO:root:Time 18h 42m 25s, Avg Reward 0.34800000000000003, Avg Accuracy 0.38, Avg Ep length 23.36, Best Reward 0.588
+INFO:root:Training thread: 27 Num iters: 54K Avg policy loss: -0.2810557186603546 Avg value loss: 0.5146622061729431
+INFO:root:Training thread: 1 Num iters: 52K Avg policy loss: -0.33666276931762695 Avg value loss: 0.4847096800804138
+INFO:root:Training thread: 11 Num iters: 51K Avg policy loss: -0.11698263883590698 Avg value loss: 0.4367446005344391
+INFO:root:Training thread: 33 Num iters: 55K Avg policy loss: -0.3745729327201843 Avg value loss: 0.46969687938690186
+INFO:root:Time 18h 44m 17s, Avg Reward 0.52, Avg Accuracy 0.56, Avg Ep length 17.84, Best Reward 0.588
+INFO:root:Time 18h 46m 13s, Avg Reward 0.276, Avg Accuracy 0.32, Avg Ep length 22.88, Best Reward 0.588
+INFO:root:Training thread: 38 Num iters: 55K Avg policy loss: -0.21604909002780914 Avg value loss: 0.46780160069465637
+INFO:root:Training thread: 19 Num iters: 51K Avg policy loss: -0.12003349512815475 Avg value loss: 0.45199063420295715
+INFO:root:Training thread: 6 Num iters: 54K Avg policy loss: -0.2789302170276642 Avg value loss: 0.5001082420349121
+INFO:root:Time 18h 48m 18s, Avg Reward 0.4759999999999999, Avg Accuracy 0.5, Avg Ep length 19.66, Best Reward 0.588
+INFO:root:Training thread: 37 Num iters: 54K Avg policy loss: -0.19919052720069885 Avg value loss: 0.4443550407886505
+INFO:root:Time 18h 50m 20s, Avg Reward 0.484, Avg Accuracy 0.5, Avg Ep length 20.6, Best Reward 0.588
+INFO:root:Training thread: 0 Num iters: 53K Avg policy loss: -0.3299773931503296 Avg value loss: 0.5276881456375122
+INFO:root:Training thread: 26 Num iters: 53K Avg policy loss: -0.1781565546989441 Avg value loss: 0.4561992585659027
+INFO:root:Time 18h 52m 21s, Avg Reward 0.436, Avg Accuracy 0.46, Avg Ep length 20.46, Best Reward 0.588
+INFO:root:Training thread: 13 Num iters: 53K Avg policy loss: -0.12608259916305542 Avg value loss: 0.4416063725948334
+INFO:root:Training thread: 35 Num iters: 48K Avg policy loss: -0.21638111770153046 Avg value loss: 0.4732929468154907
+INFO:root:Time 18h 54m 24s, Avg Reward 0.368, Avg Accuracy 0.4, Avg Ep length 22.28, Best Reward 0.588
+INFO:root:Training thread: 34 Num iters: 52K Avg policy loss: -0.18524481356143951 Avg value loss: 0.4670927822589874
+INFO:root:Time 18h 56m 22s, Avg Reward 0.38799999999999996, Avg Accuracy 0.42, Avg Ep length 21.14, Best Reward 0.588
+INFO:root:Training thread: 9 Num iters: 52K Avg policy loss: -0.31267401576042175 Avg value loss: 0.4610040783882141
+INFO:root:Time 18h 58m 25s, Avg Reward 0.5720000000000001, Avg Accuracy 0.6, Avg Ep length 19.5, Best Reward 0.588
+INFO:root:Time 19h 00m 26s, Avg Reward 0.384, Avg Accuracy 0.42, Avg Ep length 22.54, Best Reward 0.588
+INFO:root:Training thread: 28 Num iters: 51K Avg policy loss: -0.20679384469985962 Avg value loss: 0.43362513184547424
+INFO:root:Training thread: 36 Num iters: 51K Avg policy loss: -0.22088013589382172 Avg value loss: 0.4448186755180359
+INFO:root:Training thread: 8 Num iters: 51K Avg policy loss: -0.12702777981758118 Avg value loss: 0.480269193649292
+INFO:root:Time 19h 02m 28s, Avg Reward 0.468, Avg Accuracy 0.5, Avg Ep length 20.22, Best Reward 0.588
+INFO:root:Training thread: 14 Num iters: 53K Avg policy loss: -0.234900563955307 Avg value loss: 0.4990658760070801
+INFO:root:Training thread: 24 Num iters: 54K Avg policy loss: -0.2326723039150238 Avg value loss: 0.42249763011932373
+INFO:root:Time 19h 04m 26s, Avg Reward 0.596, Avg Accuracy 0.62, Avg Ep length 18.96, Best Reward 0.588
+INFO:root:Training thread: 29 Num iters: 52K Avg policy loss: -0.181889608502388 Avg value loss: 0.4827258884906769
+INFO:root:Time 19h 06m 28s, Avg Reward 0.348, Avg Accuracy 0.36, Avg Ep length 23.6, Best Reward 0.596
+INFO:root:Training thread: 4 Num iters: 54K Avg policy loss: -0.23711828887462616 Avg value loss: 0.4185614287853241
+INFO:root:Training thread: 16 Num iters: 54K Avg policy loss: -0.31714263558387756 Avg value loss: 0.4414338767528534
+INFO:root:Time 19h 08m 27s, Avg Reward 0.424, Avg Accuracy 0.48, Avg Ep length 19.26, Best Reward 0.596
+INFO:root:Time 19h 10m 24s, Avg Reward 0.484, Avg Accuracy 0.52, Avg Ep length 19.8, Best Reward 0.596
+INFO:root:Training thread: 23 Num iters: 52K Avg policy loss: -0.12978878617286682 Avg value loss: 0.4575985074043274
+INFO:root:Training thread: 17 Num iters: 53K Avg policy loss: -0.18995201587677002 Avg value loss: 0.4385809600353241
+INFO:root:Time 19h 12m 27s, Avg Reward 0.348, Avg Accuracy 0.36, Avg Ep length 22.84, Best Reward 0.596
+INFO:root:Time 19h 14m 34s, Avg Reward 0.484, Avg Accuracy 0.5, Avg Ep length 20.74, Best Reward 0.596
+INFO:root:Training thread: 18 Num iters: 53K Avg policy loss: -0.27571022510528564 Avg value loss: 0.5154405236244202
+INFO:root:Training thread: 2 Num iters: 54K Avg policy loss: -0.2698292136192322 Avg value loss: 0.4094694256782532
+INFO:root:Training thread: 30 Num iters: 54K Avg policy loss: -0.29615187644958496 Avg value loss: 0.4933776557445526
+INFO:root:Time 19h 16m 43s, Avg Reward 0.52, Avg Accuracy 0.54, Avg Ep length 20.92, Best Reward 0.596
+INFO:root:Training thread: 5 Num iters: 54K Avg policy loss: -0.2675067186355591 Avg value loss: 0.49445483088493347
+INFO:root:Time 19h 18m 52s, Avg Reward 0.428, Avg Accuracy 0.46, Avg Ep length 20.9, Best Reward 0.596
+INFO:root:Training thread: 12 Num iters: 55K Avg policy loss: -0.3087596893310547 Avg value loss: 0.5009733438491821
+INFO:root:Training thread: 15 Num iters: 56K Avg policy loss: -0.29386836290359497 Avg value loss: 0.47250232100486755
+INFO:root:Training thread: 22 Num iters: 54K Avg policy loss: -0.2431228905916214 Avg value loss: 0.42520400881767273
+INFO:root:Time 19h 20m 57s, Avg Reward 0.588, Avg Accuracy 0.6, Avg Ep length 21.64, Best Reward 0.596
+INFO:root:Training thread: 32 Num iters: 53K Avg policy loss: -0.15206341445446014 Avg value loss: 0.4579770863056183
+INFO:root:Training thread: 21 Num iters: 55K Avg policy loss: -0.2928850054740906 Avg value loss: 0.4543812572956085
+INFO:root:Time 19h 23m 06s, Avg Reward 0.46, Avg Accuracy 0.48, Avg Ep length 23.64, Best Reward 0.596
+INFO:root:Training thread: 10 Num iters: 54K Avg policy loss: -0.3616951107978821 Avg value loss: 0.5734705328941345
+INFO:root:Training thread: 39 Num iters: 52K Avg policy loss: -0.22691819071769714 Avg value loss: 0.44458675384521484
+INFO:root:Time 19h 25m 11s, Avg Reward 0.504, Avg Accuracy 0.52, Avg Ep length 20.94, Best Reward 0.596
+INFO:root:Training thread: 3 Num iters: 52K Avg policy loss: -0.32710975408554077 Avg value loss: 0.48160499334335327
+INFO:root:Time 19h 27m 14s, Avg Reward 0.40399999999999997, Avg Accuracy 0.44, Avg Ep length 21.18, Best Reward 0.596
+INFO:root:Training thread: 31 Num iters: 53K Avg policy loss: -0.18875132501125336 Avg value loss: 0.4832945764064789
+INFO:root:Training thread: 25 Num iters: 53K Avg policy loss: -0.2854045331478119 Avg value loss: 0.4825405180454254
+INFO:root:Training thread: 20 Num iters: 53K Avg policy loss: -0.20537325739860535 Avg value loss: 0.4246910810470581
+INFO:root:Training thread: 27 Num iters: 55K Avg policy loss: -0.1707521229982376 Avg value loss: 0.4486864507198334
+INFO:root:Time 19h 29m 28s, Avg Reward 0.332, Avg Accuracy 0.36, Avg Ep length 22.2, Best Reward 0.596
+INFO:root:Training thread: 7 Num iters: 54K Avg policy loss: -0.2730039656162262 Avg value loss: 0.49174556136131287
+INFO:root:Training thread: 33 Num iters: 56K Avg policy loss: -0.2751186788082123 Avg value loss: 0.43182265758514404
+INFO:root:Time 19h 31m 36s, Avg Reward 0.48, Avg Accuracy 0.52, Avg Ep length 20.66, Best Reward 0.596
+INFO:root:Training thread: 1 Num iters: 53K Avg policy loss: -0.31035009026527405 Avg value loss: 0.4469447135925293
+INFO:root:Time 19h 33m 53s, Avg Reward 0.39199999999999996, Avg Accuracy 0.42, Avg Ep length 23.1, Best Reward 0.596
+INFO:root:Training thread: 38 Num iters: 56K Avg policy loss: -0.2884238660335541 Avg value loss: 0.4308472275733948
+INFO:root:Training thread: 11 Num iters: 52K Avg policy loss: -0.1763557642698288 Avg value loss: 0.43628600239753723
+INFO:root:Training thread: 6 Num iters: 55K Avg policy loss: -0.20193862915039062 Avg value loss: 0.451921284198761
+INFO:root:Time 19h 35m 59s, Avg Reward 0.34, Avg Accuracy 0.36, Avg Ep length 25.08, Best Reward 0.596
+INFO:root:Training thread: 37 Num iters: 55K Avg policy loss: -0.3085504472255707 Avg value loss: 0.4767497181892395
+INFO:root:Time 19h 38m 04s, Avg Reward 0.42, Avg Accuracy 0.44, Avg Ep length 22.14, Best Reward 0.596
+INFO:root:Training thread: 0 Num iters: 54K Avg policy loss: -0.17624467611312866 Avg value loss: 0.47161146998405457
+INFO:root:Training thread: 19 Num iters: 52K Avg policy loss: -0.3481783866882324 Avg value loss: 0.43206343054771423
+INFO:root:Time 19h 40m 11s, Avg Reward 0.344, Avg Accuracy 0.36, Avg Ep length 23.74, Best Reward 0.596
+INFO:root:Training thread: 26 Num iters: 54K Avg policy loss: -0.34931692481040955 Avg value loss: 0.45045119524002075
+INFO:root:Training thread: 13 Num iters: 54K Avg policy loss: -0.29193586111068726 Avg value loss: 0.44430410861968994
+INFO:root:Time 19h 42m 21s, Avg Reward 0.352, Avg Accuracy 0.38, Avg Ep length 22.98, Best Reward 0.596
+INFO:root:Time 19h 44m 18s, Avg Reward 0.43199999999999994, Avg Accuracy 0.46, Avg Ep length 19.6, Best Reward 0.596
+INFO:root:Time 19h 46m 31s, Avg Reward 0.4159999999999999, Avg Accuracy 0.44, Avg Ep length 21.14, Best Reward 0.596
+INFO:root:Training thread: 35 Num iters: 49K Avg policy loss: -0.19402478635311127 Avg value loss: 0.3932037651538849
+INFO:root:Training thread: 34 Num iters: 53K Avg policy loss: -0.2421746551990509 Avg value loss: 0.4070158004760742
+INFO:root:Training thread: 9 Num iters: 53K Avg policy loss: -0.2890271246433258 Avg value loss: 0.4369923770427704
+INFO:root:Time 19h 48m 46s, Avg Reward 0.44, Avg Accuracy 0.48, Avg Ep length 21.86, Best Reward 0.596
+INFO:root:Time 19h 50m 54s, Avg Reward 0.45199999999999996, Avg Accuracy 0.48, Avg Ep length 21.6, Best Reward 0.596
+INFO:root:Training thread: 14 Num iters: 54K Avg policy loss: -0.20090217888355255 Avg value loss: 0.3850979804992676
+INFO:root:Training thread: 24 Num iters: 55K Avg policy loss: -0.27812623977661133 Avg value loss: 0.4616123139858246
+INFO:root:Training thread: 36 Num iters: 52K Avg policy loss: -0.08302973210811615 Avg value loss: 0.3796839118003845
+INFO:root:Training thread: 28 Num iters: 52K Avg policy loss: -0.24991509318351746 Avg value loss: 0.43932291865348816
+INFO:root:Time 19h 52m 53s, Avg Reward 0.5, Avg Accuracy 0.52, Avg Ep length 21.34, Best Reward 0.596
+INFO:root:Training thread: 8 Num iters: 52K Avg policy loss: -0.21476219594478607 Avg value loss: 0.4279850423336029
+INFO:root:Training thread: 4 Num iters: 55K Avg policy loss: -0.29691290855407715 Avg value loss: 0.45222917199134827
+INFO:root:Time 19h 54m 58s, Avg Reward 0.42, Avg Accuracy 0.44, Avg Ep length 22.72, Best Reward 0.596
+INFO:root:Training thread: 29 Num iters: 53K Avg policy loss: -0.19644604623317719 Avg value loss: 0.4591430127620697
+INFO:root:Training thread: 16 Num iters: 55K Avg policy loss: -0.17070549726486206 Avg value loss: 0.4064759612083435
+INFO:root:Time 19h 57m 03s, Avg Reward 0.37200000000000005, Avg Accuracy 0.4, Avg Ep length 21.72, Best Reward 0.596
+INFO:root:Time 19h 59m 06s, Avg Reward 0.504, Avg Accuracy 0.52, Avg Ep length 20.02, Best Reward 0.596
+INFO:root:Training thread: 17 Num iters: 54K Avg policy loss: -0.2787749767303467 Avg value loss: 0.45272696018218994
+INFO:root:Time 20h 01m 24s, Avg Reward 0.36400000000000005, Avg Accuracy 0.4, Avg Ep length 22.86, Best Reward 0.596
+INFO:root:Training thread: 23 Num iters: 53K Avg policy loss: -0.27311068773269653 Avg value loss: 0.4161129891872406
+INFO:root:Training thread: 18 Num iters: 54K Avg policy loss: -0.15488046407699585 Avg value loss: 0.43863093852996826
+INFO:root:Training thread: 30 Num iters: 55K Avg policy loss: -0.3167848289012909 Avg value loss: 0.4274326264858246
+INFO:root:Time 20h 03m 29s, Avg Reward 0.38799999999999996, Avg Accuracy 0.42, Avg Ep length 21.4, Best Reward 0.596
+INFO:root:Training thread: 2 Num iters: 55K Avg policy loss: -0.18074257671833038 Avg value loss: 0.39669716358184814
+INFO:root:Time 20h 05m 30s, Avg Reward 0.536, Avg Accuracy 0.56, Avg Ep length 19.32, Best Reward 0.596
+INFO:root:Training thread: 12 Num iters: 56K Avg policy loss: -0.2956275939941406 Avg value loss: 0.3947235345840454
+INFO:root:Training thread: 15 Num iters: 57K Avg policy loss: -0.34734028577804565 Avg value loss: 0.4082176983356476
+INFO:root:Training thread: 5 Num iters: 55K Avg policy loss: -0.36560603976249695 Avg value loss: 0.4183834493160248
+INFO:root:Time 20h 07m 43s, Avg Reward 0.444, Avg Accuracy 0.48, Avg Ep length 20.22, Best Reward 0.596
+INFO:root:Training thread: 22 Num iters: 55K Avg policy loss: -0.2821350395679474 Avg value loss: 0.4278527796268463
+INFO:root:Training thread: 21 Num iters: 56K Avg policy loss: -0.3062576949596405 Avg value loss: 0.42206627130508423
+INFO:root:Time 20h 09m 41s, Avg Reward 0.508, Avg Accuracy 0.54, Avg Ep length 19.78, Best Reward 0.596
+INFO:root:Training thread: 32 Num iters: 54K Avg policy loss: -0.11450782418251038 Avg value loss: 0.46298733353614807
+INFO:root:Time 20h 11m 49s, Avg Reward 0.4759999999999999, Avg Accuracy 0.5, Avg Ep length 20.54, Best Reward 0.596
+INFO:root:Training thread: 10 Num iters: 55K Avg policy loss: -0.18489976227283478 Avg value loss: 0.38072165846824646
+INFO:root:Time 20h 14m 01s, Avg Reward 0.48400000000000004, Avg Accuracy 0.5, Avg Ep length 20.76, Best Reward 0.596
+INFO:root:Training thread: 39 Num iters: 53K Avg policy loss: -0.24097208678722382 Avg value loss: 0.40818774700164795
+INFO:root:Time 20h 16m 11s, Avg Reward 0.428, Avg Accuracy 0.46, Avg Ep length 21.28, Best Reward 0.596
+INFO:root:Training thread: 27 Num iters: 56K Avg policy loss: -0.2485714703798294 Avg value loss: 0.4939296543598175
+INFO:root:Training thread: 33 Num iters: 57K Avg policy loss: -0.06815332919359207 Avg value loss: 0.3988959789276123
+INFO:root:Training thread: 3 Num iters: 53K Avg policy loss: -0.17711549997329712 Avg value loss: 0.4494706392288208
+INFO:root:Time 20h 18m 15s, Avg Reward 0.42400000000000004, Avg Accuracy 0.46, Avg Ep length 19.72, Best Reward 0.596
+INFO:root:Training thread: 31 Num iters: 54K Avg policy loss: -0.2239769995212555 Avg value loss: 0.4364597797393799
+INFO:root:Training thread: 7 Num iters: 55K Avg policy loss: -0.3092554807662964 Avg value loss: 0.43175387382507324
+INFO:root:Training thread: 20 Num iters: 54K Avg policy loss: -0.17775121331214905 Avg value loss: 0.42830872535705566
+INFO:root:Training thread: 25 Num iters: 54K Avg policy loss: -0.2538594603538513 Avg value loss: 0.46164843440055847
+INFO:root:Time 20h 20m 20s, Avg Reward 0.5, Avg Accuracy 0.52, Avg Ep length 21.96, Best Reward 0.596
+INFO:root:Training thread: 38 Num iters: 57K Avg policy loss: -0.25015154480934143 Avg value loss: 0.4172554612159729
+INFO:root:Time 20h 22m 23s, Avg Reward 0.504, Avg Accuracy 0.54, Avg Ep length 19.16, Best Reward 0.596
+INFO:root:Training thread: 6 Num iters: 56K Avg policy loss: -0.27404406666755676 Avg value loss: 0.44631528854370117
+INFO:root:Training thread: 37 Num iters: 56K Avg policy loss: -0.35921725630760193 Avg value loss: 0.4183180630207062
+INFO:root:Training thread: 1 Num iters: 54K Avg policy loss: -0.31433236598968506 Avg value loss: 0.39991918206214905
+INFO:root:Time 20h 24m 24s, Avg Reward 0.568, Avg Accuracy 0.58, Avg Ep length 18.22, Best Reward 0.596
+INFO:root:Time 20h 26m 25s, Avg Reward 0.444, Avg Accuracy 0.48, Avg Ep length 18.78, Best Reward 0.596
+INFO:root:Training thread: 11 Num iters: 53K Avg policy loss: -0.2357688695192337 Avg value loss: 0.4172549545764923
+INFO:root:Training thread: 0 Num iters: 55K Avg policy loss: -0.20718544721603394 Avg value loss: 0.4423507750034332
+INFO:root:Time 20h 28m 28s, Avg Reward 0.4, Avg Accuracy 0.44, Avg Ep length 21.58, Best Reward 0.596
+INFO:root:Training thread: 26 Num iters: 55K Avg policy loss: -0.2610987424850464 Avg value loss: 0.4315769672393799
+INFO:root:Training thread: 13 Num iters: 55K Avg policy loss: -0.1716417670249939 Avg value loss: 0.43481847643852234
+INFO:root:Time 20h 30m 36s, Avg Reward 0.48, Avg Accuracy 0.5, Avg Ep length 21.6, Best Reward 0.596
+INFO:root:Training thread: 19 Num iters: 53K Avg policy loss: -0.1416831761598587 Avg value loss: 0.4610879123210907
+INFO:root:Time 20h 32m 38s, Avg Reward 0.41200000000000003, Avg Accuracy 0.44, Avg Ep length 21.2, Best Reward 0.596
+INFO:root:Time 20h 34m 48s, Avg Reward 0.508, Avg Accuracy 0.54, Avg Ep length 20.78, Best Reward 0.596
+INFO:root:Time 20h 37m 01s, Avg Reward 0.508, Avg Accuracy 0.54, Avg Ep length 19.68, Best Reward 0.596
+INFO:root:Training thread: 34 Num iters: 54K Avg policy loss: -0.2186734825372696 Avg value loss: 0.4409556984901428
+INFO:root:Training thread: 9 Num iters: 54K Avg policy loss: -0.24840982258319855 Avg value loss: 0.41018760204315186
+INFO:root:Time 20h 39m 06s, Avg Reward 0.6, Avg Accuracy 0.62, Avg Ep length 19.56, Best Reward 0.596
+INFO:root:Training thread: 24 Num iters: 56K Avg policy loss: -0.271330863237381 Avg value loss: 0.4657546877861023
+INFO:root:Training thread: 14 Num iters: 55K Avg policy loss: -0.3443704843521118 Avg value loss: 0.5053150057792664
+INFO:root:Time 20h 41m 15s, Avg Reward 0.39599999999999996, Avg Accuracy 0.42, Avg Ep length 22.12, Best Reward 0.6
+INFO:root:Training thread: 35 Num iters: 50K Avg policy loss: -0.24276098608970642 Avg value loss: 0.4545625150203705
+INFO:root:Training thread: 4 Num iters: 56K Avg policy loss: -0.30547937750816345 Avg value loss: 0.4232445955276489
+INFO:root:Training thread: 16 Num iters: 56K Avg policy loss: -0.30735692381858826 Avg value loss: 0.4968007504940033
+INFO:root:Time 20h 43m 27s, Avg Reward 0.552, Avg Accuracy 0.56, Avg Ep length 21.9, Best Reward 0.6
+INFO:root:Training thread: 36 Num iters: 53K Avg policy loss: -0.33180296421051025 Avg value loss: 0.43199726939201355
+INFO:root:Training thread: 8 Num iters: 53K Avg policy loss: -0.15193134546279907 Avg value loss: 0.37400802969932556
+INFO:root:Training thread: 28 Num iters: 53K Avg policy loss: -0.1465114802122116 Avg value loss: 0.40445056557655334
+INFO:root:Time 20h 45m 24s, Avg Reward 0.5, Avg Accuracy 0.52, Avg Ep length 20.8, Best Reward 0.6
+INFO:root:Training thread: 29 Num iters: 54K Avg policy loss: -0.3319154679775238 Avg value loss: 0.45117810368537903
+INFO:root:Time 20h 47m 30s, Avg Reward 0.5159999999999999, Avg Accuracy 0.54, Avg Ep length 20.84, Best Reward 0.6
+INFO:root:Time 20h 49m 31s, Avg Reward 0.544, Avg Accuracy 0.58, Avg Ep length 18.8, Best Reward 0.6
+INFO:root:Training thread: 17 Num iters: 55K Avg policy loss: -0.25026172399520874 Avg value loss: 0.4050065279006958
+INFO:root:Training thread: 30 Num iters: 56K Avg policy loss: -0.2802978456020355 Avg value loss: 0.4371444284915924
+INFO:root:Time 20h 51m 41s, Avg Reward 0.44400000000000006, Avg Accuracy 0.46, Avg Ep length 21.46, Best Reward 0.6
+INFO:root:Training thread: 18 Num iters: 55K Avg policy loss: -0.3225051462650299 Avg value loss: 0.42565202713012695
+INFO:root:Training thread: 2 Num iters: 56K Avg policy loss: -0.26731443405151367 Avg value loss: 0.4980812668800354
+INFO:root:Training thread: 23 Num iters: 54K Avg policy loss: -0.2956843674182892 Avg value loss: 0.4326131045818329
+INFO:root:Training thread: 15 Num iters: 58K Avg policy loss: -0.1824008971452713 Avg value loss: 0.4324066936969757
+INFO:root:Training thread: 12 Num iters: 57K Avg policy loss: -0.24364978075027466 Avg value loss: 0.4532117545604706
+INFO:root:Time 20h 53m 53s, Avg Reward 0.5, Avg Accuracy 0.52, Avg Ep length 21.58, Best Reward 0.6
+INFO:root:Training thread: 5 Num iters: 56K Avg policy loss: -0.26243624091148376 Avg value loss: 0.432125061750412
+INFO:root:Training thread: 21 Num iters: 57K Avg policy loss: -0.26517802476882935 Avg value loss: 0.40611544251441956
+INFO:root:Time 20h 56m 02s, Avg Reward 0.48, Avg Accuracy 0.5, Avg Ep length 21.78, Best Reward 0.6
+INFO:root:Training thread: 22 Num iters: 56K Avg policy loss: -0.4298785626888275 Avg value loss: 0.46009185910224915
+INFO:root:Time 20h 58m 02s, Avg Reward 0.428, Avg Accuracy 0.44, Avg Ep length 22.92, Best Reward 0.6
+INFO:root:Training thread: 10 Num iters: 56K Avg policy loss: -0.29181188344955444 Avg value loss: 0.3964847922325134
+INFO:root:Time 21h 00m 20s, Avg Reward 0.392, Avg Accuracy 0.4, Avg Ep length 24.24, Best Reward 0.6
+INFO:root:Training thread: 32 Num iters: 55K Avg policy loss: -0.25908100605010986 Avg value loss: 0.41814911365509033
+INFO:root:Time 21h 02m 19s, Avg Reward 0.5, Avg Accuracy 0.52, Avg Ep length 20.84, Best Reward 0.6
+INFO:root:Training thread: 27 Num iters: 57K Avg policy loss: -0.288862019777298 Avg value loss: 0.4527650475502014
+INFO:root:Training thread: 33 Num iters: 58K Avg policy loss: -0.21419233083724976 Avg value loss: 0.4207570254802704
+INFO:root:Time 21h 04m 33s, Avg Reward 0.52, Avg Accuracy 0.54, Avg Ep length 19.46, Best Reward 0.6
+INFO:root:Training thread: 7 Num iters: 56K Avg policy loss: -0.2300894409418106 Avg value loss: 0.40702494978904724
+INFO:root:Time 21h 06m 35s, Avg Reward 0.43200000000000005, Avg Accuracy 0.44, Avg Ep length 22.54, Best Reward 0.6
+INFO:root:Training thread: 39 Num iters: 54K Avg policy loss: -0.26138418912887573 Avg value loss: 0.4099639058113098
+INFO:root:Training thread: 31 Num iters: 55K Avg policy loss: -0.251732736825943 Avg value loss: 0.38254207372665405
+INFO:root:Training thread: 20 Num iters: 55K Avg policy loss: -0.24441543221473694 Avg value loss: 0.40816110372543335
+INFO:root:Training thread: 3 Num iters: 54K Avg policy loss: -0.2611403465270996 Avg value loss: 0.42353805899620056
+INFO:root:Time 21h 08m 35s, Avg Reward 0.45199999999999996, Avg Accuracy 0.48, Avg Ep length 21.04, Best Reward 0.6
+INFO:root:Training thread: 38 Num iters: 58K Avg policy loss: -0.1945628970861435 Avg value loss: 0.3631127178668976
+INFO:root:Training thread: 25 Num iters: 55K Avg policy loss: -0.20771102607250214 Avg value loss: 0.4333251416683197
+INFO:root:Training thread: 6 Num iters: 57K Avg policy loss: -0.11949940025806427 Avg value loss: 0.3422696590423584
+INFO:root:Training thread: 37 Num iters: 57K Avg policy loss: -0.37102803587913513 Avg value loss: 0.4170237183570862
+INFO:root:Time 21h 10m 35s, Avg Reward 0.43200000000000005, Avg Accuracy 0.46, Avg Ep length 21.84, Best Reward 0.6
+INFO:root:Time 21h 12m 42s, Avg Reward 0.38, Avg Accuracy 0.42, Avg Ep length 21.58, Best Reward 0.6
+INFO:root:Training thread: 1 Num iters: 55K Avg policy loss: -0.11651545763015747 Avg value loss: 0.4040280878543854
+INFO:root:Training thread: 0 Num iters: 56K Avg policy loss: -0.30582132935523987 Avg value loss: 0.3919152021408081
+INFO:root:Time 21h 14m 37s, Avg Reward 0.616, Avg Accuracy 0.64, Avg Ep length 16.16, Best Reward 0.6
+INFO:root:Time 21h 16m 48s, Avg Reward 0.4, Avg Accuracy 0.42, Avg Ep length 22.54, Best Reward 0.616
+INFO:root:Training thread: 11 Num iters: 54K Avg policy loss: -0.23186646401882172 Avg value loss: 0.41233304142951965
